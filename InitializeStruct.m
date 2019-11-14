@@ -76,7 +76,7 @@ p.F = 0;
 p.NCalc = p.ly*p.lx*p.N;
 %% Solid Bed Geometry
 
-BED = 'currentripple';
+BED = 'sinusoid';
 
 switch BED,
     case 'none'
