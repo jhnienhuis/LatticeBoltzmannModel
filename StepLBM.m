@@ -1,0 +1,19 @@
+function g = StepLBM(p,g)
+
+% TIME-DEPENDENT BODY FORCES
+g = GetForce(p,g);
+
+% COLLISION STEP
+g = Collide(p,g);
+
+% MICROSCOPIC BOUNDARY CONDITIONS (E.G., NO-SLIP, FREE-SLIP)
+g = MicroBC(p,g); 
+
+% STREAMING STEP 
+g = Stream(p,g);
+
+% MACROSCOPIC BOUNDARY CONDITIONS, IF ANY (E.G., INLET/OUTLET PRESSURE OR VELOCITY)
+g = MacroBC(p,g);
+
+% COMPUTE MACROSCOPIC VARIABLES (density and velocity)
+g = GetRhoU(p,g);
